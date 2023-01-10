@@ -1,0 +1,43 @@
+#include<iostream>
+#include<queue>
+using namespace std;
+
+void queueEveryItration(queue<int>f)
+{
+	while(!f.empty())
+	{
+		cout << f.front() << " ";
+		f.pop();
+	}
+	cout << endl;
+}
+    int findTheWinner(int n, int k) {
+        queue<int> friends;
+        for(int i=1 ; i<=n ; i++)
+        {
+            friends.push(i);
+        }
+        queueEveryItration(friends);
+        while(friends.size() != 1){
+            for(int i=1 ; i<k ; i++)
+            {
+                int x = friends.front();
+                cout << "Front Value" << " " << x << endl;
+                friends.pop();
+                friends.push(x);
+                
+                
+            }
+            friends.pop();
+            queueEveryItration(friends);
+        }
+        
+        return friends.front();
+    }
+
+
+main()
+{
+	int x = findTheWinner(5 , 2);
+	cout << x;	
+}
